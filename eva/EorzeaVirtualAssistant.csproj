@@ -1,0 +1,849 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{C4AE557A-3402-4792-891B-4358D94A4D4B}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>EorzeaVirtualAssistant</RootNamespace>
+    <AssemblyName>EorzeaVirtualAssistant</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="DotNetZip, Version=1.12.0.0, Culture=neutral, PublicKeyToken=6583c7c814667745, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>SaintCoinach\DotNetZip.dll</HintPath>
+    </Reference>
+    <Reference Include="DotSquish, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>SaintCoinach\DotSquish.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>SaintCoinach\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="Flurl, Version=3.0.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Flurl.3.0.1\lib\net461\Flurl.dll</HintPath>
+    </Reference>
+    <Reference Include="Flurl.Http, Version=3.0.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Flurl.Http.3.0.1\lib\net461\Flurl.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="netstandard, Version=2.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>SaintCoinach\netstandard.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="Ookii.Dialogs.Wpf, Version=1.0.0.0, Culture=neutral, PublicKeyToken=0c15020868fd6249, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>SaintCoinach\Ookii.Dialogs.Wpf.dll</HintPath>
+    </Reference>
+    <Reference Include="SaintCoinach, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>SaintCoinach\SaintCoinach.dll</HintPath>
+    </Reference>
+    <Reference Include="SaintCoinach.Graphics.Viewer, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>SaintCoinach\SaintCoinach.Graphics.Viewer.dll</HintPath>
+    </Reference>
+    <Reference Include="SharpDX, Version=2.6.3.0, Culture=neutral, PublicKeyToken=b4dcf0f35e5521f1, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>SaintCoinach\SharpDX.dll</HintPath>
+    </Reference>
+    <Reference Include="SharpDX.D3DCompiler, Version=2.6.3.0, Culture=neutral, PublicKeyToken=b4dcf0f35e5521f1, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>SaintCoinach\SharpDX.D3DCompiler.dll</HintPath>
+    </Reference>
+    <Reference Include="SharpDX.Direct3D11, Version=2.6.3.0, Culture=neutral, PublicKeyToken=b4dcf0f35e5521f1, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>SaintCoinach\SharpDX.Direct3D11.dll</HintPath>
+    </Reference>
+    <Reference Include="SharpDX.Direct3D11.Effects, Version=2.6.3.0, Culture=neutral, PublicKeyToken=b4dcf0f35e5521f1, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>SaintCoinach\SharpDX.Direct3D11.Effects.dll</HintPath>
+    </Reference>
+    <Reference Include="SharpDX.DXGI, Version=2.6.3.0, Culture=neutral, PublicKeyToken=b4dcf0f35e5521f1, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>SaintCoinach\SharpDX.DXGI.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=4.0.6.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>SaintCoinach\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Text.Encoding.CodePages, Version=4.1.3.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>SaintCoinach\System.Text.Encoding.CodePages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ValueTuple, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.ValueTuple.4.5.0\lib\net47\System.ValueTuple.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="DataBuilder.cs" />
+    <Compile Include="Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form1.Designer.cs">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EVAMain.cs" />
+    <Compile Include="Form2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form2.Designer.cs">
+      <DependentUpon>Form2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Setup.cs" />
+    <EmbeddedResource Include="Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <None Include="SaintCoinach\Definitions\Achievement.json" />
+    <None Include="SaintCoinach\Definitions\AchievementCategory.json" />
+    <None Include="SaintCoinach\Definitions\AchievementHideCondition.json" />
+    <None Include="SaintCoinach\Definitions\AchievementKind.json" />
+    <None Include="SaintCoinach\Definitions\Action.json" />
+    <None Include="SaintCoinach\Definitions\ActionCastTimeline.json" />
+    <None Include="SaintCoinach\Definitions\ActionCastVFX.json" />
+    <None Include="SaintCoinach\Definitions\ActionCategory.json" />
+    <None Include="SaintCoinach\Definitions\ActionComboRoute.json" />
+    <None Include="SaintCoinach\Definitions\ActionIndirection.json" />
+    <None Include="SaintCoinach\Definitions\ActionParam.json" />
+    <None Include="SaintCoinach\Definitions\ActionProcStatus.json" />
+    <None Include="SaintCoinach\Definitions\ActionTimeline.json" />
+    <None Include="SaintCoinach\Definitions\ActionTimelineMove.json" />
+    <None Include="SaintCoinach\Definitions\ActionTimelineReplace.json" />
+    <None Include="SaintCoinach\Definitions\ActionTransient.json" />
+    <None Include="SaintCoinach\Definitions\ActivityFeedButtons.json" />
+    <None Include="SaintCoinach\Definitions\ActivityFeedCaptions.json" />
+    <None Include="SaintCoinach\Definitions\ActivityFeedGroupCaptions.json" />
+    <None Include="SaintCoinach\Definitions\ActivityFeedImages.json" />
+    <None Include="SaintCoinach\Definitions\Addon.json" />
+    <None Include="SaintCoinach\Definitions\Adventure.json" />
+    <None Include="SaintCoinach\Definitions\AdventureExPhase.json" />
+    <None Include="SaintCoinach\Definitions\AetherCurrent.json" />
+    <None Include="SaintCoinach\Definitions\AetherCurrentCompFlgSet.json" />
+    <None Include="SaintCoinach\Definitions\AetherialWheel.json" />
+    <None Include="SaintCoinach\Definitions\Aetheryte.json" />
+    <None Include="SaintCoinach\Definitions\AetheryteSystemDefine.json" />
+    <None Include="SaintCoinach\Definitions\AirshipExplorationLevel.json" />
+    <None Include="SaintCoinach\Definitions\AirshipExplorationLog.json" />
+    <None Include="SaintCoinach\Definitions\AirshipExplorationParamType.json" />
+    <None Include="SaintCoinach\Definitions\AirshipExplorationPart.json" />
+    <None Include="SaintCoinach\Definitions\AirshipExplorationPoint.json" />
+    <None Include="SaintCoinach\Definitions\AnimationLOD.json" />
+    <None Include="SaintCoinach\Definitions\AnimaWeapon5.json" />
+    <None Include="SaintCoinach\Definitions\AnimaWeapon5Param.json" />
+    <None Include="SaintCoinach\Definitions\AnimaWeapon5PatternGroup.json" />
+    <None Include="SaintCoinach\Definitions\AnimaWeapon5SpiritTalk.json" />
+    <None Include="SaintCoinach\Definitions\AnimaWeapon5SpiritTalkParam.json" />
+    <None Include="SaintCoinach\Definitions\AnimaWeapon5TradeItem.json" />
+    <None Include="SaintCoinach\Definitions\AnimaWeaponFUITalk.json" />
+    <None Include="SaintCoinach\Definitions\AnimaWeaponFUITalkParam.json" />
+    <None Include="SaintCoinach\Definitions\AnimaWeaponIcon.json" />
+    <None Include="SaintCoinach\Definitions\AnimaWeaponItem.json" />
+    <None Include="SaintCoinach\Definitions\AozAction.json" />
+    <None Include="SaintCoinach\Definitions\AozActionTransient.json" />
+    <None Include="SaintCoinach\Definitions\AOZArrangement.json" />
+    <None Include="SaintCoinach\Definitions\AOZBoss.json" />
+    <None Include="SaintCoinach\Definitions\AOZContent.json" />
+    <None Include="SaintCoinach\Definitions\AOZContentBriefingBNpc.json" />
+    <None Include="SaintCoinach\Definitions\AquariumFish.json" />
+    <None Include="SaintCoinach\Definitions\AquariumWater.json" />
+    <None Include="SaintCoinach\Definitions\ArrayEventHandler.json" />
+    <None Include="SaintCoinach\Definitions\AttackType.json" />
+    <None Include="SaintCoinach\Definitions\BacklightColor.json" />
+    <None Include="SaintCoinach\Definitions\Ballista.json" />
+    <None Include="SaintCoinach\Definitions\Balloon.json" />
+    <None Include="SaintCoinach\Definitions\BaseParam.json" />
+    <None Include="SaintCoinach\Definitions\BattleLeve.json" />
+    <None Include="SaintCoinach\Definitions\BattleLeveRule.json" />
+    <None Include="SaintCoinach\Definitions\BeastRankBonus.json" />
+    <None Include="SaintCoinach\Definitions\BeastReputationRank.json" />
+    <None Include="SaintCoinach\Definitions\BeastTribe.json" />
+    <None Include="SaintCoinach\Definitions\Behavior.json" />
+    <None Include="SaintCoinach\Definitions\BehaviorPath.json" />
+    <None Include="SaintCoinach\Definitions\BenchmarkOverrideEquipment.json" />
+    <None Include="SaintCoinach\Definitions\BGM.json" />
+    <None Include="SaintCoinach\Definitions\BGMFade.json" />
+    <None Include="SaintCoinach\Definitions\BGMFadeType.json" />
+    <None Include="SaintCoinach\Definitions\BGMScene.json" />
+    <None Include="SaintCoinach\Definitions\BGMSituation.json" />
+    <None Include="SaintCoinach\Definitions\BGMSwitch.json" />
+    <None Include="SaintCoinach\Definitions\BGMSystemDefine.json" />
+    <None Include="SaintCoinach\Definitions\BNpcAnnounceIcon.json" />
+    <None Include="SaintCoinach\Definitions\BNpcBase.json" />
+    <None Include="SaintCoinach\Definitions\BNpcCustomize.json" />
+    <None Include="SaintCoinach\Definitions\BNpcName.json" />
+    <None Include="SaintCoinach\Definitions\BNpcParts.json" />
+    <None Include="SaintCoinach\Definitions\BNpcState.json" />
+    <None Include="SaintCoinach\Definitions\Buddy.json" />
+    <None Include="SaintCoinach\Definitions\BuddyAction.json" />
+    <None Include="SaintCoinach\Definitions\BuddyEquip.json" />
+    <None Include="SaintCoinach\Definitions\BuddyItem.json" />
+    <None Include="SaintCoinach\Definitions\BuddyRank.json" />
+    <None Include="SaintCoinach\Definitions\BuddySkill.json" />
+    <None Include="SaintCoinach\Definitions\Cabinet.json" />
+    <None Include="SaintCoinach\Definitions\CabinetCategory.json" />
+    <None Include="SaintCoinach\Definitions\Calendar.json" />
+    <None Include="SaintCoinach\Definitions\Carry.json" />
+    <None Include="SaintCoinach\Definitions\Channeling.json" />
+    <None Include="SaintCoinach\Definitions\CharaMakeClassEquip.json" />
+    <None Include="SaintCoinach\Definitions\CharaMakeCustomize.json" />
+    <None Include="SaintCoinach\Definitions\CharaMakeName.json" />
+    <None Include="SaintCoinach\Definitions\CharaMakeType.json" />
+    <None Include="SaintCoinach\Definitions\ChocoboRace.json" />
+    <None Include="SaintCoinach\Definitions\ChocoboRaceAbility.json" />
+    <None Include="SaintCoinach\Definitions\ChocoboRaceAbilityType.json" />
+    <None Include="SaintCoinach\Definitions\ChocoboRaceItem.json" />
+    <None Include="SaintCoinach\Definitions\ChocoboRaceRank.json" />
+    <None Include="SaintCoinach\Definitions\ChocoboRaceStatus.json" />
+    <None Include="SaintCoinach\Definitions\ChocoboRaceTerritory.json" />
+    <None Include="SaintCoinach\Definitions\ChocoboRaceTutorial.json" />
+    <None Include="SaintCoinach\Definitions\ChocoboRaceWeather.json" />
+    <None Include="SaintCoinach\Definitions\ChocoboTaxi.json" />
+    <None Include="SaintCoinach\Definitions\ChocoboTaxiStand.json" />
+    <None Include="SaintCoinach\Definitions\CircleActivity.json" />
+    <None Include="SaintCoinach\Definitions\ClassJob.json" />
+    <None Include="SaintCoinach\Definitions\ClassJobCategory.json" />
+    <None Include="SaintCoinach\Definitions\CollectablesShop.json" />
+    <None Include="SaintCoinach\Definitions\CollectablesShopItem.json" />
+    <None Include="SaintCoinach\Definitions\CollectablesShopItemGroup.json" />
+    <None Include="SaintCoinach\Definitions\CollectablesShopRefine.json" />
+    <None Include="SaintCoinach\Definitions\CollectablesShopRewardItem.json" />
+    <None Include="SaintCoinach\Definitions\CollectablesShopRewardScrip.json" />
+    <None Include="SaintCoinach\Definitions\Companion.json" />
+    <None Include="SaintCoinach\Definitions\CompanionMove.json" />
+    <None Include="SaintCoinach\Definitions\CompanionTransient.json" />
+    <None Include="SaintCoinach\Definitions\CompanyAction.json" />
+    <None Include="SaintCoinach\Definitions\CompanyCraftDraft.json" />
+    <None Include="SaintCoinach\Definitions\CompanyCraftDraftCategory.json" />
+    <None Include="SaintCoinach\Definitions\CompanyCraftManufactoryState.json" />
+    <None Include="SaintCoinach\Definitions\CompanyCraftPart.json" />
+    <None Include="SaintCoinach\Definitions\CompanyCraftProcess.json" />
+    <None Include="SaintCoinach\Definitions\CompanyCraftSequence.json" />
+    <None Include="SaintCoinach\Definitions\CompanyCraftSupplyItem.json" />
+    <None Include="SaintCoinach\Definitions\CompanyCraftType.json" />
+    <None Include="SaintCoinach\Definitions\CompanyLeve.json" />
+    <None Include="SaintCoinach\Definitions\CompanyLeveRule.json" />
+    <None Include="SaintCoinach\Definitions\CompleteJournal.json" />
+    <None Include="SaintCoinach\Definitions\CompleteJournalCategory.json" />
+    <None Include="SaintCoinach\Definitions\Condition.json" />
+    <None Include="SaintCoinach\Definitions\ConfigKey.json" />
+    <None Include="SaintCoinach\Definitions\ContentCloseCycle.json" />
+    <None Include="SaintCoinach\Definitions\ContentExAction.json" />
+    <None Include="SaintCoinach\Definitions\ContentFinderCondition.json" />
+    <None Include="SaintCoinach\Definitions\ContentFinderConditionTransient.json" />
+    <None Include="SaintCoinach\Definitions\ContentGauge.json" />
+    <None Include="SaintCoinach\Definitions\ContentGaugeColor.json" />
+    <None Include="SaintCoinach\Definitions\ContentMemberType.json" />
+    <None Include="SaintCoinach\Definitions\ContentNpcTalk.json" />
+    <None Include="SaintCoinach\Definitions\ContentRandomSelect.json" />
+    <None Include="SaintCoinach\Definitions\ContentRoulette.json" />
+    <None Include="SaintCoinach\Definitions\ContentRouletteOpenRule.json" />
+    <None Include="SaintCoinach\Definitions\ContentRouletteRoleBonus.json" />
+    <None Include="SaintCoinach\Definitions\ContentsNote.json" />
+    <None Include="SaintCoinach\Definitions\ContentsTutorial.json" />
+    <None Include="SaintCoinach\Definitions\ContentsTutorialPage.json" />
+    <None Include="SaintCoinach\Definitions\ContentTalk.json" />
+    <None Include="SaintCoinach\Definitions\ContentTalkParam.json" />
+    <None Include="SaintCoinach\Definitions\ContentType.json" />
+    <None Include="SaintCoinach\Definitions\CraftAction.json" />
+    <None Include="SaintCoinach\Definitions\CraftLeve.json" />
+    <None Include="SaintCoinach\Definitions\CraftLevelDifference.json" />
+    <None Include="SaintCoinach\Definitions\CraftType.json" />
+    <None Include="SaintCoinach\Definitions\Credit.json" />
+    <None Include="SaintCoinach\Definitions\CreditBackImage.json" />
+    <None Include="SaintCoinach\Definitions\CreditCast.json" />
+    <None Include="SaintCoinach\Definitions\CreditList.json" />
+    <None Include="SaintCoinach\Definitions\CreditListText.json" />
+    <None Include="SaintCoinach\Definitions\CustomTalk.json" />
+    <None Include="SaintCoinach\Definitions\CustomTalkDynamicIcon.json" />
+    <None Include="SaintCoinach\Definitions\CustomTalkNestHandlers.json" />
+    <None Include="SaintCoinach\Definitions\Cutscene.json" />
+    <None Include="SaintCoinach\Definitions\CutsceneMotion.json" />
+    <None Include="SaintCoinach\Definitions\CutsceneWorkIndex.json" />
+    <None Include="SaintCoinach\Definitions\CutScreenImage.json" />
+    <None Include="SaintCoinach\Definitions\CycleTime.json" />
+    <None Include="SaintCoinach\Definitions\DailySupplyItem.json" />
+    <None Include="SaintCoinach\Definitions\DawnContent.json" />
+    <None Include="SaintCoinach\Definitions\DawnGrowMember.json" />
+    <None Include="SaintCoinach\Definitions\DawnMemberUIParam.json" />
+    <None Include="SaintCoinach\Definitions\DawnQuestAnnounce.json" />
+    <None Include="SaintCoinach\Definitions\DawnQuestMember.json" />
+    <None Include="SaintCoinach\Definitions\DeepDungeon.json" />
+    <None Include="SaintCoinach\Definitions\DeepDungeonBan.json" />
+    <None Include="SaintCoinach\Definitions\DeepDungeonDanger.json" />
+    <None Include="SaintCoinach\Definitions\DeepDungeonEquipment.json" />
+    <None Include="SaintCoinach\Definitions\DeepDungeonFloorEffectUI.json" />
+    <None Include="SaintCoinach\Definitions\DeepDungeonItem.json" />
+    <None Include="SaintCoinach\Definitions\DeepDungeonLayer.json" />
+    <None Include="SaintCoinach\Definitions\DeepDungeonMagicStone.json" />
+    <None Include="SaintCoinach\Definitions\DeepDungeonMap5X.json" />
+    <None Include="SaintCoinach\Definitions\DeepDungeonRoom.json" />
+    <None Include="SaintCoinach\Definitions\DeepDungeonStatus.json" />
+    <None Include="SaintCoinach\Definitions\DefaultTalk.json" />
+    <None Include="SaintCoinach\Definitions\DefaultTalkLipSyncType.json" />
+    <None Include="SaintCoinach\Definitions\DeliveryQuest.json" />
+    <None Include="SaintCoinach\Definitions\Description.json" />
+    <None Include="SaintCoinach\Definitions\DescriptionPage.json" />
+    <None Include="SaintCoinach\Definitions\DescriptionSection.json" />
+    <None Include="SaintCoinach\Definitions\DescriptionString.json" />
+    <None Include="SaintCoinach\Definitions\DisposalShop.json" />
+    <None Include="SaintCoinach\Definitions\DisposalShopFilterType.json" />
+    <None Include="SaintCoinach\Definitions\DisposalShopItem.json" />
+    <None Include="SaintCoinach\Definitions\DpsChallenge.json" />
+    <None Include="SaintCoinach\Definitions\DpsChallengeOfficer.json" />
+    <None Include="SaintCoinach\Definitions\DpsChallengeTransient.json" />
+    <None Include="SaintCoinach\Definitions\DynamicEvent.json" />
+    <None Include="SaintCoinach\Definitions\DynamicEventEnemyType.json" />
+    <None Include="SaintCoinach\Definitions\DynamicEventSingleBattle.json" />
+    <None Include="SaintCoinach\Definitions\DynamicEventType.json" />
+    <None Include="SaintCoinach\Definitions\EmjAddon.json" />
+    <None Include="SaintCoinach\Definitions\EmjDani.json" />
+    <None Include="SaintCoinach\Definitions\Emote.json" />
+    <None Include="SaintCoinach\Definitions\EmoteCategory.json" />
+    <None Include="SaintCoinach\Definitions\EmoteMode.json" />
+    <None Include="SaintCoinach\Definitions\ENpcBase.json" />
+    <None Include="SaintCoinach\Definitions\ENpcDressUp.json" />
+    <None Include="SaintCoinach\Definitions\ENpcDressUpDress.json" />
+    <None Include="SaintCoinach\Definitions\ENpcResident.json" />
+    <None Include="SaintCoinach\Definitions\EObj.json" />
+    <None Include="SaintCoinach\Definitions\EObjName.json" />
+    <None Include="SaintCoinach\Definitions\EquipRaceCategory.json" />
+    <None Include="SaintCoinach\Definitions\EquipSlotCategory.json" />
+    <None Include="SaintCoinach\Definitions\EurekaAetherItem.json" />
+    <None Include="SaintCoinach\Definitions\EurekaAethernet.json" />
+    <None Include="SaintCoinach\Definitions\EurekaGrowData.json" />
+    <None Include="SaintCoinach\Definitions\EurekaLogosMixerProbability.json" />
+    <None Include="SaintCoinach\Definitions\EurekaMagiaAction.json" />
+    <None Include="SaintCoinach\Definitions\EurekaMagiciteItem.json" />
+    <None Include="SaintCoinach\Definitions\EurekaMagiciteItemType.json" />
+    <None Include="SaintCoinach\Definitions\EurekaSphereElementAdjust.json" />
+    <None Include="SaintCoinach\Definitions\EventAction.json" />
+    <None Include="SaintCoinach\Definitions\EventIconPriority.json" />
+    <None Include="SaintCoinach\Definitions\EventIconType.json" />
+    <None Include="SaintCoinach\Definitions\EventItem.json" />
+    <None Include="SaintCoinach\Definitions\EventItemCastTimeline.json" />
+    <None Include="SaintCoinach\Definitions\EventItemHelp.json" />
+    <None Include="SaintCoinach\Definitions\EventItemTimeline.json" />
+    <None Include="SaintCoinach\Definitions\EventSystemDefine.json" />
+    <None Include="SaintCoinach\Definitions\ExportedSG.json" />
+    <None Include="SaintCoinach\Definitions\ExVersion.json" />
+    <None Include="SaintCoinach\Definitions\Fate.json" />
+    <None Include="SaintCoinach\Definitions\FateEvent.json" />
+    <None Include="SaintCoinach\Definitions\FateMode.json" />
+    <None Include="SaintCoinach\Definitions\FateProgressUI.json" />
+    <None Include="SaintCoinach\Definitions\FateTokenType.json" />
+    <None Include="SaintCoinach\Definitions\FCActivity.json" />
+    <None Include="SaintCoinach\Definitions\FCActivityCategory.json" />
+    <None Include="SaintCoinach\Definitions\FCAuthority.json" />
+    <None Include="SaintCoinach\Definitions\FCAuthorityCategory.json" />
+    <None Include="SaintCoinach\Definitions\FCChestName.json" />
+    <None Include="SaintCoinach\Definitions\FCCrestSymbol.json" />
+    <None Include="SaintCoinach\Definitions\FccShop.json" />
+    <None Include="SaintCoinach\Definitions\FCHierarchy.json" />
+    <None Include="SaintCoinach\Definitions\FCProfile.json" />
+    <None Include="SaintCoinach\Definitions\FCRank.json" />
+    <None Include="SaintCoinach\Definitions\FCReputation.json" />
+    <None Include="SaintCoinach\Definitions\FCRights.json" />
+    <None Include="SaintCoinach\Definitions\Festival.json" />
+    <None Include="SaintCoinach\Definitions\FieldMarker.json" />
+    <None Include="SaintCoinach\Definitions\FishingRecordType.json" />
+    <None Include="SaintCoinach\Definitions\FishingRecordTypeTransient.json" />
+    <None Include="SaintCoinach\Definitions\FishingSpot.json" />
+    <None Include="SaintCoinach\Definitions\FishParameter.json" />
+    <None Include="SaintCoinach\Definitions\Frontline03.json" />
+    <None Include="SaintCoinach\Definitions\Frontline04.json" />
+    <None Include="SaintCoinach\Definitions\FurnitureCatalogCategory.json" />
+    <None Include="SaintCoinach\Definitions\FurnitureCatalogItemList.json" />
+    <None Include="SaintCoinach\Definitions\game.ver" />
+    <None Include="SaintCoinach\Definitions\GardeningSeed.json" />
+    <None Include="SaintCoinach\Definitions\GatheringCondition.json" />
+    <None Include="SaintCoinach\Definitions\GatheringExp.json" />
+    <None Include="SaintCoinach\Definitions\GatheringItem.json" />
+    <None Include="SaintCoinach\Definitions\GatheringItemLevelConvertTable.json" />
+    <None Include="SaintCoinach\Definitions\GatheringItemPoint.json" />
+    <None Include="SaintCoinach\Definitions\GatheringLeve.json" />
+    <None Include="SaintCoinach\Definitions\GatheringLeveRoute.json" />
+    <None Include="SaintCoinach\Definitions\GatheringLeveRule.json" />
+    <None Include="SaintCoinach\Definitions\GatheringNotebookList.json" />
+    <None Include="SaintCoinach\Definitions\GatheringPoint.json" />
+    <None Include="SaintCoinach\Definitions\GatheringPointBase.json" />
+    <None Include="SaintCoinach\Definitions\GatheringPointBonus.json" />
+    <None Include="SaintCoinach\Definitions\GatheringPointBonusType.json" />
+    <None Include="SaintCoinach\Definitions\GatheringPointName.json" />
+    <None Include="SaintCoinach\Definitions\GatheringPointTransient.json" />
+    <None Include="SaintCoinach\Definitions\GatheringRarePopTimeTable.json" />
+    <None Include="SaintCoinach\Definitions\GatheringSubCategory.json" />
+    <None Include="SaintCoinach\Definitions\GatheringType.json" />
+    <None Include="SaintCoinach\Definitions\GcArmyCaptureTactics.json" />
+    <None Include="SaintCoinach\Definitions\GcArmyExpedition.json" />
+    <None Include="SaintCoinach\Definitions\GcArmyExpeditionMemberBonus.json" />
+    <None Include="SaintCoinach\Definitions\GcArmyExpeditionType.json" />
+    <None Include="SaintCoinach\Definitions\GcArmyMemberGrow.json" />
+    <None Include="SaintCoinach\Definitions\GcArmyTraining.json" />
+    <None Include="SaintCoinach\Definitions\GCRankGridaniaFemaleText.json" />
+    <None Include="SaintCoinach\Definitions\GCRankGridaniaMaleText.json" />
+    <None Include="SaintCoinach\Definitions\GCRankLimsaFemaleText.json" />
+    <None Include="SaintCoinach\Definitions\GCRankLimsaMaleText.json" />
+    <None Include="SaintCoinach\Definitions\GCRankUldahFemaleText.json" />
+    <None Include="SaintCoinach\Definitions\GCRankUldahMaleText.json" />
+    <None Include="SaintCoinach\Definitions\GCScripShopCategory.json" />
+    <None Include="SaintCoinach\Definitions\GCScripShopItem.json" />
+    <None Include="SaintCoinach\Definitions\GCShop.json" />
+    <None Include="SaintCoinach\Definitions\GCShopItemCategory.json" />
+    <None Include="SaintCoinach\Definitions\GCSupplyDuty.json" />
+    <None Include="SaintCoinach\Definitions\GCSupplyDutyReward.json" />
+    <None Include="SaintCoinach\Definitions\GeneralAction.json" />
+    <None Include="SaintCoinach\Definitions\GFATE.json" />
+    <None Include="SaintCoinach\Definitions\GFateClimbing2.json" />
+    <None Include="SaintCoinach\Definitions\GFateClimbing2Content.json" />
+    <None Include="SaintCoinach\Definitions\GFateClimbing2TotemType.json" />
+    <None Include="SaintCoinach\Definitions\GFateRideShooting.json" />
+    <None Include="SaintCoinach\Definitions\GilShop.json" />
+    <None Include="SaintCoinach\Definitions\GilShopItem.json" />
+    <None Include="SaintCoinach\Definitions\GimmickAccessor.json" />
+    <None Include="SaintCoinach\Definitions\GimmickJump.json" />
+    <None Include="SaintCoinach\Definitions\GimmickRect.json" />
+    <None Include="SaintCoinach\Definitions\GoldSaucerArcadeMachine.json" />
+    <None Include="SaintCoinach\Definitions\GoldSaucerTextData.json" />
+    <None Include="SaintCoinach\Definitions\GrandCompany.json" />
+    <None Include="SaintCoinach\Definitions\GrandCompanyRank.json" />
+    <None Include="SaintCoinach\Definitions\GroupPoseFrame.json" />
+    <None Include="SaintCoinach\Definitions\GroupPoseStamp.json" />
+    <None Include="SaintCoinach\Definitions\GroupPoseStampCategory.json" />
+    <None Include="SaintCoinach\Definitions\GuardianDeity.json" />
+    <None Include="SaintCoinach\Definitions\Guide.json" />
+    <None Include="SaintCoinach\Definitions\GuidePage.json" />
+    <None Include="SaintCoinach\Definitions\GuidePageString.json" />
+    <None Include="SaintCoinach\Definitions\GuideTitle.json" />
+    <None Include="SaintCoinach\Definitions\GuildleveAssignment.json" />
+    <None Include="SaintCoinach\Definitions\GuildleveAssignmentCategory.json" />
+    <None Include="SaintCoinach\Definitions\GuildOrder.json" />
+    <None Include="SaintCoinach\Definitions\GuildOrderGuide.json" />
+    <None Include="SaintCoinach\Definitions\GuildOrderOfficer.json" />
+    <None Include="SaintCoinach\Definitions\HairMakeType.json" />
+    <None Include="SaintCoinach\Definitions\HouseRetainerPose.json" />
+    <None Include="SaintCoinach\Definitions\HousingAethernet.json" />
+    <None Include="SaintCoinach\Definitions\HousingAppeal.json" />
+    <None Include="SaintCoinach\Definitions\HousingEmploymentNpcList.json" />
+    <None Include="SaintCoinach\Definitions\HousingEmploymentNpcRace.json" />
+    <None Include="SaintCoinach\Definitions\HousingExterior.json" />
+    <None Include="SaintCoinach\Definitions\HousingFurniture.json" />
+    <None Include="SaintCoinach\Definitions\HousingLandSet.json" />
+    <None Include="SaintCoinach\Definitions\HousingMapMarkerInfo.json" />
+    <None Include="SaintCoinach\Definitions\HousingMerchantPose.json" />
+    <None Include="SaintCoinach\Definitions\HousingPlacement.json" />
+    <None Include="SaintCoinach\Definitions\HousingPreset.json" />
+    <None Include="SaintCoinach\Definitions\HousingUnitedExterior.json" />
+    <None Include="SaintCoinach\Definitions\HousingYardObject.json" />
+    <None Include="SaintCoinach\Definitions\HowTo.json" />
+    <None Include="SaintCoinach\Definitions\HowToCategory.json" />
+    <None Include="SaintCoinach\Definitions\HowToPage.json" />
+    <None Include="SaintCoinach\Definitions\HugeCraftworksNpc.json" />
+    <None Include="SaintCoinach\Definitions\HugeCraftworksRank.json" />
+    <None Include="SaintCoinach\Definitions\HWDAnnounce.json" />
+    <None Include="SaintCoinach\Definitions\HWDCrafterSupply.json" />
+    <None Include="SaintCoinach\Definitions\HWDCrafterSupplyReward.json" />
+    <None Include="SaintCoinach\Definitions\HWDCrafterSupplyTerm.json" />
+    <None Include="SaintCoinach\Definitions\HWDDevLayerControl.json" />
+    <None Include="SaintCoinach\Definitions\HWDDevLevelUI.json" />
+    <None Include="SaintCoinach\Definitions\HWDDevLively.json" />
+    <None Include="SaintCoinach\Definitions\HWDDevProgress.json" />
+    <None Include="SaintCoinach\Definitions\HWDGathereInspectTerm.json" />
+    <None Include="SaintCoinach\Definitions\HWDGathererInspection.json" />
+    <None Include="SaintCoinach\Definitions\HWDGathererInspectionReward.json" />
+    <None Include="SaintCoinach\Definitions\HWDInfoBoardArticle.json" />
+    <None Include="SaintCoinach\Definitions\HWDInfoBoardArticleTransient.json" />
+    <None Include="SaintCoinach\Definitions\HWDInfoBoardArticleType.json" />
+    <None Include="SaintCoinach\Definitions\HWDLevelChangeDeception.json" />
+    <None Include="SaintCoinach\Definitions\HWDSharedGroup.json" />
+    <None Include="SaintCoinach\Definitions\HWDSharedGroupControlParam.json" />
+    <None Include="SaintCoinach\Definitions\IKDContentBonus.json" />
+    <None Include="SaintCoinach\Definitions\IKDFishParam.json" />
+    <None Include="SaintCoinach\Definitions\IKDRoute.json" />
+    <None Include="SaintCoinach\Definitions\IKDRouteTable.json" />
+    <None Include="SaintCoinach\Definitions\IKDSpot.json" />
+    <None Include="SaintCoinach\Definitions\InclusionShop.json" />
+    <None Include="SaintCoinach\Definitions\InclusionShopCategory.json" />
+    <None Include="SaintCoinach\Definitions\InclusionShopSeries.json" />
+    <None Include="SaintCoinach\Definitions\IndividualWeather.json" />
+    <None Include="SaintCoinach\Definitions\InstanceContent.json" />
+    <None Include="SaintCoinach\Definitions\InstanceContentBuff.json" />
+    <None Include="SaintCoinach\Definitions\InstanceContentCSBonus.json" />
+    <None Include="SaintCoinach\Definitions\InstanceContentGuide.json" />
+    <None Include="SaintCoinach\Definitions\InstanceContentTextData.json" />
+    <None Include="SaintCoinach\Definitions\Item.json" />
+    <None Include="SaintCoinach\Definitions\ItemAction.json" />
+    <None Include="SaintCoinach\Definitions\ItemActionTelepo.json" />
+    <None Include="SaintCoinach\Definitions\ItemBarterCheck.json" />
+    <None Include="SaintCoinach\Definitions\ItemFood.json" />
+    <None Include="SaintCoinach\Definitions\ItemLevel.json" />
+    <None Include="SaintCoinach\Definitions\ItemSearchCategory.json" />
+    <None Include="SaintCoinach\Definitions\ItemSeries.json" />
+    <None Include="SaintCoinach\Definitions\ItemSortCategory.json" />
+    <None Include="SaintCoinach\Definitions\ItemSpecialBonus.json" />
+    <None Include="SaintCoinach\Definitions\ItemUICategory.json" />
+    <None Include="SaintCoinach\Definitions\JobHudManual.json" />
+    <None Include="SaintCoinach\Definitions\JobHudManualPriority.json" />
+    <None Include="SaintCoinach\Definitions\JournalCategory.json" />
+    <None Include="SaintCoinach\Definitions\JournalGenre.json" />
+    <None Include="SaintCoinach\Definitions\JournalSection.json" />
+    <None Include="SaintCoinach\Definitions\Knockback.json" />
+    <None Include="SaintCoinach\Definitions\LegacyQuest.json" />
+    <None Include="SaintCoinach\Definitions\Leve.json" />
+    <None Include="SaintCoinach\Definitions\LeveAssignmentType.json" />
+    <None Include="SaintCoinach\Definitions\LeveClient.json" />
+    <None Include="SaintCoinach\Definitions\Level.json" />
+    <None Include="SaintCoinach\Definitions\LeveRewardItem.json" />
+    <None Include="SaintCoinach\Definitions\LeveRewardItemGroup.json" />
+    <None Include="SaintCoinach\Definitions\LeveString.json" />
+    <None Include="SaintCoinach\Definitions\LeveVfx.json" />
+    <None Include="SaintCoinach\Definitions\Lobby.json" />
+    <None Include="SaintCoinach\Definitions\LogFilter.json" />
+    <None Include="SaintCoinach\Definitions\LogKind.json" />
+    <None Include="SaintCoinach\Definitions\LogMessage.json" />
+    <None Include="SaintCoinach\Definitions\LotteryExchangeShop.json" />
+    <None Include="SaintCoinach\Definitions\MacroIcon.json" />
+    <None Include="SaintCoinach\Definitions\MacroIconRedirectOld.json" />
+    <None Include="SaintCoinach\Definitions\MainCommand.json" />
+    <None Include="SaintCoinach\Definitions\MainCommandCategory.json" />
+    <None Include="SaintCoinach\Definitions\ManeuversArmor.json" />
+    <None Include="SaintCoinach\Definitions\Map.json" />
+    <None Include="SaintCoinach\Definitions\MapMarker.json" />
+    <None Include="SaintCoinach\Definitions\MapMarkerRegion.json" />
+    <None Include="SaintCoinach\Definitions\MapSymbol.json" />
+    <None Include="SaintCoinach\Definitions\Marker.json" />
+    <None Include="SaintCoinach\Definitions\MasterpieceSupplyDuty.json" />
+    <None Include="SaintCoinach\Definitions\MasterpieceSupplyMultiplier.json" />
+    <None Include="SaintCoinach\Definitions\Materia.json" />
+    <None Include="SaintCoinach\Definitions\MateriaJoinRate.json" />
+    <None Include="SaintCoinach\Definitions\MateriaJoinRateGatherCraft.json" />
+    <None Include="SaintCoinach\Definitions\MateriaTomestoneRate.json" />
+    <None Include="SaintCoinach\Definitions\MiniGameRA.json" />
+    <None Include="SaintCoinach\Definitions\MinionRace.json" />
+    <None Include="SaintCoinach\Definitions\MinionRules.json" />
+    <None Include="SaintCoinach\Definitions\MinionSkillType.json" />
+    <None Include="SaintCoinach\Definitions\MobHuntOrder.json" />
+    <None Include="SaintCoinach\Definitions\MobHuntOrderType.json" />
+    <None Include="SaintCoinach\Definitions\MobHuntReward.json" />
+    <None Include="SaintCoinach\Definitions\MobHuntRewardCap.json" />
+    <None Include="SaintCoinach\Definitions\MobHuntTarget.json" />
+    <None Include="SaintCoinach\Definitions\ModelChara.json" />
+    <None Include="SaintCoinach\Definitions\ModelSkeleton.json" />
+    <None Include="SaintCoinach\Definitions\ModelState.json" />
+    <None Include="SaintCoinach\Definitions\MonsterNote.json" />
+    <None Include="SaintCoinach\Definitions\MonsterNoteTarget.json" />
+    <None Include="SaintCoinach\Definitions\MotionTimeline.json" />
+    <None Include="SaintCoinach\Definitions\MotionTimelineBlendTable.json" />
+    <None Include="SaintCoinach\Definitions\Mount.json" />
+    <None Include="SaintCoinach\Definitions\MountAction.json" />
+    <None Include="SaintCoinach\Definitions\MountCustomize.json" />
+    <None Include="SaintCoinach\Definitions\MountFlyingCondition.json" />
+    <None Include="SaintCoinach\Definitions\MountSpeed.json" />
+    <None Include="SaintCoinach\Definitions\MountTransient.json" />
+    <None Include="SaintCoinach\Definitions\MoveTimeline.json" />
+    <None Include="SaintCoinach\Definitions\MoveVfx.json" />
+    <None Include="SaintCoinach\Definitions\MovieStaffList.json" />
+    <None Include="SaintCoinach\Definitions\MovieSubtitle.json" />
+    <None Include="SaintCoinach\Definitions\MovieSubtitle500.json" />
+    <None Include="SaintCoinach\Definitions\MovieSubtitleVoyage.json" />
+    <None Include="SaintCoinach\Definitions\MYCTemporaryItem.json" />
+    <None Include="SaintCoinach\Definitions\MYCTemporaryItemUICategory.json" />
+    <None Include="SaintCoinach\Definitions\MYCWarResultNotebook.json" />
+    <None Include="SaintCoinach\Definitions\NotebookDivision.json" />
+    <None Include="SaintCoinach\Definitions\NotebookDivisionCategory.json" />
+    <None Include="SaintCoinach\Definitions\NotoriousMonster.json" />
+    <None Include="SaintCoinach\Definitions\NpcEquip.json" />
+    <None Include="SaintCoinach\Definitions\NpcYell.json" />
+    <None Include="SaintCoinach\Definitions\Omen.json" />
+    <None Include="SaintCoinach\Definitions\OnlineStatus.json" />
+    <None Include="SaintCoinach\Definitions\OpenContent.json" />
+    <None Include="SaintCoinach\Definitions\OpenContentCandidateName.json" />
+    <None Include="SaintCoinach\Definitions\Opening.json" />
+    <None Include="SaintCoinach\Definitions\Orchestrion.json" />
+    <None Include="SaintCoinach\Definitions\OrchestrionCategory.json" />
+    <None Include="SaintCoinach\Definitions\OrchestrionPath.json" />
+    <None Include="SaintCoinach\Definitions\OrchestrionUiparam.json" />
+    <None Include="SaintCoinach\Definitions\Ornament.json" />
+    <None Include="SaintCoinach\Definitions\ParamGrow.json" />
+    <None Include="SaintCoinach\Definitions\PartyContent.json" />
+    <None Include="SaintCoinach\Definitions\PartyContentCutscene.json" />
+    <None Include="SaintCoinach\Definitions\PartyContentTextData.json" />
+    <None Include="SaintCoinach\Definitions\PatchMark.json" />
+    <None Include="SaintCoinach\Definitions\Perform.json" />
+    <None Include="SaintCoinach\Definitions\PerformTransient.json" />
+    <None Include="SaintCoinach\Definitions\Pet.json" />
+    <None Include="SaintCoinach\Definitions\PetAction.json" />
+    <None Include="SaintCoinach\Definitions\PhysicsGroup.json" />
+    <None Include="SaintCoinach\Definitions\PhysicsWind.json" />
+    <None Include="SaintCoinach\Definitions\Picture.json" />
+    <None Include="SaintCoinach\Definitions\PlaceName.json" />
+    <None Include="SaintCoinach\Definitions\PlantPotFlowerSeed.json" />
+    <None Include="SaintCoinach\Definitions\PreHandler.json" />
+    <None Include="SaintCoinach\Definitions\PresetCamera.json" />
+    <None Include="SaintCoinach\Definitions\PresetCameraAdjust.json" />
+    <None Include="SaintCoinach\Definitions\PublicContent.json" />
+    <None Include="SaintCoinach\Definitions\PublicContentCutscene.json" />
+    <None Include="SaintCoinach\Definitions\PublicContentTextData.json" />
+    <None Include="SaintCoinach\Definitions\Purify.json" />
+    <None Include="SaintCoinach\Definitions\PvPAction.json" />
+    <None Include="SaintCoinach\Definitions\PvPActionSort.json" />
+    <None Include="SaintCoinach\Definitions\PvPRank.json" />
+    <None Include="SaintCoinach\Definitions\PvPSelectTrait.json" />
+    <None Include="SaintCoinach\Definitions\PvPTrait.json" />
+    <None Include="SaintCoinach\Definitions\Quest.json" />
+    <None Include="SaintCoinach\Definitions\QuestBattle.json" />
+    <None Include="SaintCoinach\Definitions\QuestChapter.json" />
+    <None Include="SaintCoinach\Definitions\QuestClassJobReward.json" />
+    <None Include="SaintCoinach\Definitions\QuestClassJobSupply.json" />
+    <None Include="SaintCoinach\Definitions\QuestDerivedClass.json" />
+    <None Include="SaintCoinach\Definitions\QuestRedo.json" />
+    <None Include="SaintCoinach\Definitions\QuestRedoChapterUI.json" />
+    <None Include="SaintCoinach\Definitions\QuestRedoChapterUICategory.json" />
+    <None Include="SaintCoinach\Definitions\QuestRedoChapterUITab.json" />
+    <None Include="SaintCoinach\Definitions\QuestRedoIncompChapter.json" />
+    <None Include="SaintCoinach\Definitions\QuestRepeatFlag.json" />
+    <None Include="SaintCoinach\Definitions\QuestRewardOther.json" />
+    <None Include="SaintCoinach\Definitions\QuickChat.json" />
+    <None Include="SaintCoinach\Definitions\QuickChatTransient.json" />
+    <None Include="SaintCoinach\Definitions\Race.json" />
+    <None Include="SaintCoinach\Definitions\RacingChocoboItem.json" />
+    <None Include="SaintCoinach\Definitions\RacingChocoboName.json" />
+    <None Include="SaintCoinach\Definitions\RacingChocoboNameCategory.json" />
+    <None Include="SaintCoinach\Definitions\RacingChocoboNameInfo.json" />
+    <None Include="SaintCoinach\Definitions\RacingChocoboParam.json" />
+    <None Include="SaintCoinach\Definitions\RecastNavimesh.json" />
+    <None Include="SaintCoinach\Definitions\Recipe.json" />
+    <None Include="SaintCoinach\Definitions\RecipeLevelTable.json" />
+    <None Include="SaintCoinach\Definitions\RecipeLookup.json" />
+    <None Include="SaintCoinach\Definitions\RecipeNotebookList.json" />
+    <None Include="SaintCoinach\Definitions\RecommendContents.json" />
+    <None Include="SaintCoinach\Definitions\Relic.json" />
+    <None Include="SaintCoinach\Definitions\Relic3.json" />
+    <None Include="SaintCoinach\Definitions\RelicItem.json" />
+    <None Include="SaintCoinach\Definitions\RelicNote.json" />
+    <None Include="SaintCoinach\Definitions\RelicNoteCategory.json" />
+    <None Include="SaintCoinach\Definitions\Resident.json" />
+    <None Include="SaintCoinach\Definitions\ResistanceWeaponAdjust.json" />
+    <None Include="SaintCoinach\Definitions\RetainerTask.json" />
+    <None Include="SaintCoinach\Definitions\RetainerTaskLvRange.json" />
+    <None Include="SaintCoinach\Definitions\RetainerTaskNormal.json" />
+    <None Include="SaintCoinach\Definitions\RetainerTaskParameter.json" />
+    <None Include="SaintCoinach\Definitions\RetainerTaskRandom.json" />
+    <None Include="SaintCoinach\Definitions\RideShooting.json" />
+    <None Include="SaintCoinach\Definitions\RideShootingTextData.json" />
+    <None Include="SaintCoinach\Definitions\RPParameter.json" />
+    <None Include="SaintCoinach\Definitions\SatisfactionArbitration.json" />
+    <None Include="SaintCoinach\Definitions\SatisfactionNpc.json" />
+    <None Include="SaintCoinach\Definitions\SatisfactionSupply.json" />
+    <None Include="SaintCoinach\Definitions\SatisfactionSupplyReward.json" />
+    <None Include="SaintCoinach\Definitions\ScenarioTree.json" />
+    <None Include="SaintCoinach\Definitions\ScenarioTreeTips.json" />
+    <None Include="SaintCoinach\Definitions\ScenarioTreeTipsClassQuest.json" />
+    <None Include="SaintCoinach\Definitions\ScenarioType.json" />
+    <None Include="SaintCoinach\Definitions\ScreenImage.json" />
+    <None Include="SaintCoinach\Definitions\SecretRecipeBook.json" />
+    <None Include="SaintCoinach\Definitions\SkyIsland2Mission.json" />
+    <None Include="SaintCoinach\Definitions\SkyIsland2MissionDetail.json" />
+    <None Include="SaintCoinach\Definitions\SkyIsland2MissionType.json" />
+    <None Include="SaintCoinach\Definitions\SkyIsland2RangeType.json" />
+    <None Include="SaintCoinach\Definitions\SnipeTalk.json" />
+    <None Include="SaintCoinach\Definitions\SnipeTalkName.json" />
+    <None Include="SaintCoinach\Definitions\SpearfishingItem.json" />
+    <None Include="SaintCoinach\Definitions\SpearfishingNotebook.json" />
+    <None Include="SaintCoinach\Definitions\SpearfishingRecordPage.json" />
+    <None Include="SaintCoinach\Definitions\SpecialShop.json" />
+    <None Include="SaintCoinach\Definitions\SpecialShopItemCategory.json" />
+    <None Include="SaintCoinach\Definitions\Stain.json" />
+    <None Include="SaintCoinach\Definitions\StainTransient.json" />
+    <None Include="SaintCoinach\Definitions\Status.json" />
+    <None Include="SaintCoinach\Definitions\StatusHitEffect.json" />
+    <None Include="SaintCoinach\Definitions\StatusLoopVFX.json" />
+    <None Include="SaintCoinach\Definitions\Story.json" />
+    <None Include="SaintCoinach\Definitions\SubmarineExploration.json" />
+    <None Include="SaintCoinach\Definitions\SubmarineMap.json" />
+    <None Include="SaintCoinach\Definitions\SubmarinePart.json" />
+    <None Include="SaintCoinach\Definitions\SubmarineRank.json" />
+    <None Include="SaintCoinach\Definitions\SwitchTalk.json" />
+    <None Include="SaintCoinach\Definitions\SwitchTalkVariation.json" />
+    <None Include="SaintCoinach\Definitions\TerritoryType.json" />
+    <None Include="SaintCoinach\Definitions\TerritoryTypeTransient.json" />
+    <None Include="SaintCoinach\Definitions\TextCommand.json" />
+    <None Include="SaintCoinach\Definitions\Title.json" />
+    <None Include="SaintCoinach\Definitions\Tomestones.json" />
+    <None Include="SaintCoinach\Definitions\TomestonesItem.json" />
+    <None Include="SaintCoinach\Definitions\TopicSelect.json" />
+    <None Include="SaintCoinach\Definitions\Town.json" />
+    <None Include="SaintCoinach\Definitions\Trait.json" />
+    <None Include="SaintCoinach\Definitions\TraitRecast.json" />
+    <None Include="SaintCoinach\Definitions\TraitTransient.json" />
+    <None Include="SaintCoinach\Definitions\Transformation.json" />
+    <None Include="SaintCoinach\Definitions\Treasure.json" />
+    <None Include="SaintCoinach\Definitions\TreasureHuntRank.json" />
+    <None Include="SaintCoinach\Definitions\TreasureModel.json" />
+    <None Include="SaintCoinach\Definitions\TreasureSpot.json" />
+    <None Include="SaintCoinach\Definitions\Tribe.json" />
+    <None Include="SaintCoinach\Definitions\TripleTriad.json" />
+    <None Include="SaintCoinach\Definitions\TripleTriadCard.json" />
+    <None Include="SaintCoinach\Definitions\TripleTriadCardRarity.json" />
+    <None Include="SaintCoinach\Definitions\TripleTriadCardResident.json" />
+    <None Include="SaintCoinach\Definitions\TripleTriadCardType.json" />
+    <None Include="SaintCoinach\Definitions\TripleTriadCompetition.json" />
+    <None Include="SaintCoinach\Definitions\TripleTriadRule.json" />
+    <None Include="SaintCoinach\Definitions\Tutorial.json" />
+    <None Include="SaintCoinach\Definitions\TutorialDPS.json" />
+    <None Include="SaintCoinach\Definitions\TutorialHealer.json" />
+    <None Include="SaintCoinach\Definitions\TutorialTank.json" />
+    <None Include="SaintCoinach\Definitions\UIColor.json" />
+    <None Include="SaintCoinach\Definitions\VaseFlower.json" />
+    <None Include="SaintCoinach\Definitions\VFX.json" />
+    <None Include="SaintCoinach\Definitions\Warp.json" />
+    <None Include="SaintCoinach\Definitions\WarpCondition.json" />
+    <None Include="SaintCoinach\Definitions\WarpLogic.json" />
+    <None Include="SaintCoinach\Definitions\WeaponTimeline.json" />
+    <None Include="SaintCoinach\Definitions\Weather.json" />
+    <None Include="SaintCoinach\Definitions\WeatherGroup.json" />
+    <None Include="SaintCoinach\Definitions\WeatherRate.json" />
+    <None Include="SaintCoinach\Definitions\WeatherReportReplace.json" />
+    <None Include="SaintCoinach\Definitions\WebGuidance.json" />
+    <None Include="SaintCoinach\Definitions\WebURL.json" />
+    <None Include="SaintCoinach\Definitions\WeddingBGM.json" />
+    <None Include="SaintCoinach\Definitions\WeeklyBingoOrderData.json" />
+    <None Include="SaintCoinach\Definitions\WeeklyBingoRewardData.json" />
+    <None Include="SaintCoinach\Definitions\WeeklyBingoText.json" />
+    <None Include="SaintCoinach\Definitions\WeeklyLotBonus.json" />
+    <None Include="SaintCoinach\Definitions\World.json" />
+    <None Include="SaintCoinach\Definitions\WorldDCGroupType.json" />
+    <None Include="SaintCoinach\Definitions\YardCatalogCategory.json" />
+    <None Include="SaintCoinach\Definitions\YardCatalogItemList.json" />
+    <None Include="SaintCoinach\Definitions\YKW.json" />
+    <None Include="SaintCoinach\Definitions\ZoneSharedGroup.json" />
+    <None Include="SaintCoinach\Effects\HLSL\Common.fxh" />
+    <None Include="SaintCoinach\Effects\HLSL\Common.Skinned.fxh" />
+    <None Include="SaintCoinach\Effects\HLSL\CustomizeParameter.fxh" />
+    <None Include="SaintCoinach\Effects\HLSL\Lighting.fxh" />
+    <None Include="SaintCoinach\Effects\HLSL\Structures.fxh" />
+    <None Include="SaintCoinach\Godbert.exe.config" />
+    <None Include="SaintCoinach\README.md" />
+    <None Include="SaintCoinach\SaintCoinach.dll.config" />
+    <None Include="SaintCoinach\VERSION" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="img\icon\folder.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="SaintCoinach\DotNetZip.dll" />
+    <Content Include="SaintCoinach\DotNetZip.xml" />
+    <Content Include="SaintCoinach\DotSquish.dll" />
+    <Content Include="SaintCoinach\DotSquish.pdb" />
+    <Content Include="SaintCoinach\Effects\HLSL\BasicEffect.fx" />
+    <Content Include="SaintCoinach\Effects\HLSL\Bg.fx" />
+    <Content Include="SaintCoinach\Effects\HLSL\BgColorChange.fx" />
+    <Content Include="SaintCoinach\Effects\HLSL\BgUvScroll.fx" />
+    <Content Include="SaintCoinach\Effects\HLSL\Character.fx" />
+    <Content Include="SaintCoinach\Effects\HLSL\Crystal.fx" />
+    <Content Include="SaintCoinach\Effects\HLSL\Hair.fx" />
+    <Content Include="SaintCoinach\Effects\HLSL\Iris.fx" />
+    <Content Include="SaintCoinach\Effects\HLSL\Skin.fx" />
+    <Content Include="SaintCoinach\EntityFramework.dll" />
+    <Content Include="SaintCoinach\EntityFramework.xml" />
+    <Content Include="SaintCoinach\fbxInterop.dll" />
+    <Content Include="SaintCoinach\Godbert.exe" />
+    <Content Include="SaintCoinach\Godbert.pdb" />
+    <Content Include="SaintCoinach\hkAnimationInterop.dll" />
+    <Content Include="SaintCoinach\libfbxsdk.dll" />
+    <Content Include="SaintCoinach\netstandard.dll" />
+    <Content Include="SaintCoinach\Newtonsoft.Json.dll" />
+    <Content Include="SaintCoinach\Newtonsoft.Json.pdb" />
+    <Content Include="SaintCoinach\Newtonsoft.Json.xml" />
+    <Content Include="SaintCoinach\Ookii.Dialogs.Wpf.dll" />
+    <Content Include="SaintCoinach\Ookii.Dialogs.Wpf.xml" />
+    <Content Include="SaintCoinach\SaintCoinach.dll" />
+    <Content Include="SaintCoinach\SaintCoinach.Graphics.Viewer.dll" />
+    <Content Include="SaintCoinach\SaintCoinach.Graphics.Viewer.pdb" />
+    <Content Include="SaintCoinach\SaintCoinach.pdb" />
+    <Content Include="SaintCoinach\SharpDX.D3DCompiler.dll" />
+    <Content Include="SaintCoinach\SharpDX.D3DCompiler.xml" />
+    <Content Include="SaintCoinach\SharpDX.Direct3D11.dll" />
+    <Content Include="SaintCoinach\SharpDX.Direct3D11.Effects.dll" />
+    <Content Include="SaintCoinach\SharpDX.Direct3D11.Effects.xml" />
+    <Content Include="SaintCoinach\SharpDX.Direct3D11.xml" />
+    <Content Include="SaintCoinach\SharpDX.dll" />
+    <Content Include="SaintCoinach\SharpDX.DXGI.dll" />
+    <Content Include="SaintCoinach\SharpDX.DXGI.xml" />
+    <Content Include="SaintCoinach\SharpDX.xml" />
+    <Content Include="SaintCoinach\sharpdx_direct3d11_effects_x64.dll" />
+    <Content Include="SaintCoinach\sharpdx_direct3d11_effects_x86.dll" />
+    <Content Include="SaintCoinach\System.Runtime.CompilerServices.Unsafe.dll" />
+    <Content Include="SaintCoinach\System.Runtime.CompilerServices.Unsafe.xml" />
+    <Content Include="SaintCoinach\System.Text.Encoding.CodePages.dll" />
+    <Content Include="SaintCoinach\System.Text.Encoding.CodePages.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

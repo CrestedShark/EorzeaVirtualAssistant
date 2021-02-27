@@ -1,0 +1,32 @@
+{
+  "sheet": "GroupPoseStamp",
+  "defaultColumn": "Name",
+  "definitions": [
+    {
+      "name": "StampIcon",
+      "converter": {
+        "type": "icon"
+      }
+    },
+    {
+      "index": 2,
+      "name": "Category",
+      "converter": {
+        "type": "link",
+        "target": "GroupPoseStampCategory"
+      }
+    },
+    {
+      "index": 4,
+      "name": "Unknown[5-4][0]"
+    },
+    {
+      "index": 5,
+      "name": "Unknown[5-4][1]"
+    },
+    {
+      "index": 8,
+      "name": "Name"
+    }
+  ]
+}

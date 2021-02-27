@@ -1,0 +1,30 @@
+{
+  "sheet": "NpcYell",
+  "defaultColumn": "Text",
+  "definitions": [
+    {
+      "index": 5,
+      "name": "OutputType"
+    },
+    {
+      "index": 6,
+      "name": "BalloonTime"
+    },
+    {
+      "index": 7,
+      "name": "IsBalloonSlow"
+    },
+    {
+      "index": 8,
+      "name": "BattleTalkTime"
+    },
+    {
+      "index": 9,
+      "name": "Unknown[5-4]"
+    },
+    {
+      "index": 10,
+      "name": "Text"
+    }
+  ]
+}

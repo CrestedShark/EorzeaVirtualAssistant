@@ -1,0 +1,25 @@
+{
+  "sheet": "GroupPoseFrame",
+  "defaultColumn": "Text",
+  "definitions": [
+    {
+      "index": 1,
+      "name": "Image",
+      "converter": {
+        "type": "icon"
+      }
+    },
+    {
+      "index": 2,
+      "name": "GridText"
+    },
+    {
+      "index": 6,
+      "name": "Unknown[5-4]"
+    },
+    {
+      "index": 7,
+      "name": "Text"
+    }
+  ]
+}
