@@ -15,9 +15,9 @@ namespace EorzeaVirtualAssistant
     {
         private string gameDir = string.Empty;
         private string dataDir = string.Empty;
-        private string cfgPath = "EVA.cfg";
-        private string dataBuilt = "data";
-        private string itemExt = ".txt";
+        private readonly string cfgPath = "EVA.cfg";
+        private readonly string dataBuilt = "data";
+        private readonly string itemExt = ".txt";
         private string itemPath = string.Empty;
 
         public DataBuilder()
@@ -62,67 +62,174 @@ namespace EorzeaVirtualAssistant
                 }
             }
 
+            //// DELETE THIS BEFORE PRODUCTION
+            if (File.Exists(dataBuilt))          
+            {
+                File.Delete(dataBuilt);
+            }   //// DELETE THIS BEFORE PRODUCTION
+
             if (!File.Exists(dataBuilt))
             {
                 CreateOrEmptyDirectories();
                 List<string> itemData = new List<string>();
                 itemCount = realm.GameData.GetSheet<SaintCoinach.Xiv.Item>().Count;
                 var itemList = realm.GameData.GetSheet<SaintCoinach.Xiv.Item>();
-                //foreach (var item in itemList)
-                for (int ix = 1; ix <= itemCount; ix++)
+
+                //for (int ix = 1; ix <= 10; ix++)
+                foreach (var item in itemList)
                 {
-                    string path = itemPath + itemList[ix].Name + itemExt;
+                    string itemName = item.Name;
+                    itemName = RemovePathUnfriendlyCharacters(itemName);
+                    string path = itemPath + itemName + itemExt;
                     //string path = itemPath + item.Name + itemExt;
                     if (!File.Exists(path))
                     {
-                        CreateEntry(File.CreateText(path), itemList[ix]);
-                        //CreateEntry(File.CreateText(path), item);
+                        CreateEntry(File.CreateText(path), item);
                     }
                 }
+                File.Create(dataBuilt);
             }
+        }
+
+        public string RemovePathUnfriendlyCharacters(string src)
+        {
+            string formatted = string.Empty;
+            var invalidCharArr = Path.GetInvalidPathChars();
+            bool stringValid = true;
+            foreach (char c in src)
+            {
+                stringValid = true;
+                foreach (char invalidChar in invalidCharArr)
+                {
+                    if (c == invalidChar || c == ':' || c == '\\' || c == '/')
+                    {
+                        stringValid = false;
+                        formatted += "-";
+                        break;
+                    }
+                }
+                if (stringValid)
+                {
+                    formatted += c;
+                }
+            }
+            return formatted;
         }
 
         private void CreateEntry(StreamWriter fs, SaintCoinach.Xiv.Item item)
         {
-            fs.WriteLine("\"AdditionalData\" : \"" + item.AdditionalData + "\"");
-            //fs.WriteLine("\"Ask\" : \"" + item.Ask + "\"");
-            fs.WriteLine("\"AsShopItems\" : \"" + GetAllShoppingList(item.AsShopItems) + "\"");
-            fs.WriteLine("\"AsShopPayment\" : \"" + GetAllShoppingListPayment(item.AsShopPayment) + "\"");
-            //fs.WriteLine("\"Bid\" : \"" + item.Bid + "\"");
-            fs.WriteLine("\"CanBeHq\" : \"" + item.CanBeHq + "\"");
-            fs.WriteLine("\"DefaultValue\" : \"" + item.DefaultValue + "\"");
-            fs.WriteLine("\"Description\" : \"" + item.Description + "\"");
-            fs.WriteLine("\"EquipSlotCategory\" : " + item.EquipSlotCategory + "\"");
-            fs.WriteLine("\"GrandCompany\" : \"" + item.GrandCompany + "\"");
-            fs.WriteLine("\"Icon\" : \"" + item.Icon + "\"");
-            fs.WriteLine("\"IsAetherialReducible\" : \"" + item.IsAetherialReducible + "\"");
-            fs.WriteLine("\"IsCollectable\" : \"" + item.IsCollectable + "\"");
-            fs.WriteLine("\"IsConvertable\" : \"" + item.IsConvertable + "\"");
-            fs.WriteLine("\"IsDyeable\" : \"" + item.IsDyeable + "\"");
-            fs.WriteLine("\"IsGlamourous\" : \"" + item.IsGlamourous + "\"");
-            fs.WriteLine("\"IsIndisposable\" : \"" + item.IsIndisposable + "\"");
-            fs.WriteLine("\"IsUnique\" : \"" + item.IsUnique + "\"");
-            fs.WriteLine("\"IsUntradable\" : \"" + item.IsUntradable + "\"");
-            fs.WriteLine("\"ItemAction\" : \"" + item.ItemAction + "\"");
-            fs.WriteLine("\"ItemLevel\" : \"" + item.ItemLevel + "\"");
-            fs.WriteLine("\"ItemSearchCategory\" : \"" + item.ItemSearchCategory + "\"");
-            fs.WriteLine("\"ItemUICategory\" : \"" + item.ItemUICategory + "\"");
-            fs.WriteLine("\"Key\" : \"" + item.Key + "\"");
-            fs.WriteLine("\"ModelMain\" : \"" + item.ModelMain + "\"");
-            fs.WriteLine("\"ModelSub\" : \"" + item.ModelSub + "\"");
-            fs.WriteLine("\"Name\" : \"" + item.Name + "\"");
-            fs.WriteLine("\"Plural\" : \"" + item.Plural + "\"");
-            fs.WriteLine("\"Rarity\" : \"" + item.Rarity + "\"");
-            fs.WriteLine("\"RecipesAsMaterial\" : \"" + GetAllRecipe(item.RecipesAsMaterial) + "\"");
-            fs.WriteLine("\"RecipesAsResult\" : \"" + GetAllRecipe(item.RecipesAsResult) + "\"");
-            fs.WriteLine("\"RepairClassJob\" : \"" + item.RepairClassJob + "\"");
-            fs.WriteLine("\"Sheet\" : \"" + item.Sheet + "\"");
-            fs.WriteLine("\"Singular\" : \"" + item.Singular + "\"");
-            fs.WriteLine("\"SourceRow\" : \"" + item.SourceRow + "\"");
-            fs.WriteLine("\"Sources\" : \"" + GetAllSources(item.Sources) + "\"");
-            fs.WriteLine("\"StackSize\" : \"" + item.StackSize + "\"");
+            string[] itemStr = new string[item.SourceRow.Sheet.Header.ColumnCount];
+            int itemStrIndex = 0;
+
+            foreach (var col in item.SourceRow.Sheet.Header.Columns)
+            {
+                // insert col key, {"name"} :
+                itemStr[itemStrIndex] += WrapStringInBrackets(WrapStringInQuotes(col.Name));
+                itemStr[itemStrIndex] += ":";
+
+                // insert col key, {"name"} :
+                var colRaw = item.ColumnValues().ElementAt(itemStrIndex);
+                if (colRaw == null)
+                {
+                    itemStr[itemStrIndex] += WrapStringInBrackets("null");
+                }
+                else if (colRaw.GetType().Equals(typeof(SaintCoinach.Text.XivString)))
+                {
+                    // insert col child(ren), {"name"} : {"Water Crystal"}
+                    SaintCoinach.Text.XivString colVal = (SaintCoinach.Text.XivString)colRaw;
+                    itemStr[itemStrIndex] += CreateFormattedStringWithBracketEnclosement(colVal.Children);
+                }
+                else
+                {
+                    itemStr[itemStrIndex] += WrapStringInBrackets(WrapStringInQuotes(colRaw.ToString()));
+                }
+                itemStrIndex++;
+            }
+            finalizeWriteToFile(fs, itemStr);
+        }
+
+        private void finalizeWriteToFile(StreamWriter fs, string[] itemStr)
+        {
+            foreach (string str in itemStr)
+            {
+                fs.WriteLine(str);
+            }
             fs.Flush();
         }
+
+        private string CreateFormattedStringWithBracketEnclosement(IEnumerable<object> values)
+        {
+            string str = string.Empty;
+            int numElementsTraversed = 0;
+            foreach (object element in values)
+            {
+                str += WrapStringInQuotes(element.ToString());
+                numElementsTraversed++;
+                if (numElementsTraversed < values.Count())
+                {
+                    str += ",";
+                }
+            }
+            return WrapStringInBrackets(str);
+        }
+
+        private string WrapStringInBrackets(string value)
+        {
+            string str = string.Empty;
+            str += "{" + value + "}";
+            return str;
+        }
+
+        private string WrapStringInQuotes(string value)
+        {
+            string str = string.Empty;
+            str += "\"" + value + "\"";
+            return str;
+        }
+
+        //private void CreateEntry(StreamWriter fs, SaintCoinach.Xiv.Item item)
+        //{
+        //    string str = string.Empty;
+        //    str += "\"AdditionalData\" : \"" + item.AdditionalData + "\"\n";
+        //    //str += "\"Ask\" : \"" + item.Ask + "\"\n";
+        //    str += "\"AsShopItems\" : \"" + GetAllShoppingList(item.AsShopItems) + "\"\n";
+        //    str += "\"AsShopPayment\" : \"" + GetAllShoppingListPayment(item.AsShopPayment) + "\"\n";
+        //    //str += "\"Bid\" : \"" + item.Bid + "\"\n";
+        //    str += "\"CanBeHq\" : \"" + item.CanBeHq + "\"\n";
+        //    str += "\"DefaultValue\" : \"" + item.DefaultValue + "\"\n";
+        //    str += "\"Description\" : \"" + item.Description + "\"\n";
+        //    str += "\"EquipSlotCategory\" : " + item.EquipSlotCategory + "\"\n";
+        //    str += "\"GrandCompany\" : \"" + item.GrandCompany + "\"\n";
+        //    str += "\"Icon\" : \"" + item.Icon + "\"\n";
+        //    str += "\"IsAetherialReducible\" : \"" + item.IsAetherialReducible + "\"\n";
+        //    str += "\"IsCollectable\" : \"" + item.IsCollectable + "\"\n";
+        //    str += "\"IsConvertable\" : \"" + item.IsConvertable + "\"\n";
+        //    str += "\"IsDyeable\" : \"" + item.IsDyeable + "\"\n";
+        //    str += "\"IsGlamourous\" : \"" + item.IsGlamourous + "\"\n";
+        //    str += "\"IsIndisposable\" : \"" + item.IsIndisposable + "\"\n";
+        //    str += "\"IsUnique\" : \"" + item.IsUnique + "\"\n";
+        //    str += "\"IsUntradable\" : \"" + item.IsUntradable + "\"\n";
+        //    str += "\"ItemAction\" : \"" + item.ItemAction + "\"\n";
+        //    str += "\"ItemLevel\" : \"" + item.ItemLevel + "\"\n";
+        //    str += "\"ItemSearchCategory\" : \"" + item.ItemSearchCategory + "\"\n";
+        //    str += "\"ItemUICategory\" : \"" + item.ItemUICategory + "\"\n";
+        //    str += "\"Key\" : \"" + item.Key + "\"\n";
+        //    str += "\"ModelMain\" : \"" + item.ModelMain + "\"\n";
+        //    str += "\"ModelSub\" : \"" + item.ModelSub + "\"\n";
+        //    str += "\"Name\" : \"" + item.Name + "\"\n";
+        //    str += "\"Plural\" : \"" + item.Plural + "\"\n";
+        //    str += "\"Rarity\" : \"" + item.Rarity + "\"\n";
+        //    str += "\"RecipesAsMaterial\" : \"" + GetAllRecipe(item.RecipesAsMaterial) + "\"\n";
+        //    str += "\"RecipesAsResult\" : \"" + GetAllRecipe(item.RecipesAsResult) + "\"\n";
+        //    str += "\"RepairClassJob\" : \"" + item.RepairClassJob + "\"\n";
+        //    str += "\"Sheet\" : \"" + item.Sheet + "\"\n";
+        //    str += "\"Singular\" : \"" + item.Singular + "\"\n";
+        //    str += "\"SourceRow\" : \"" + item.SourceRow + "\"\n";
+        //    str += "\"Sources\" : \"" + GetAllSources(item.Sources) + "\"\n";
+        //    str += "\"StackSize\" : \"" + item.StackSize + "\"\n";
+        //    fs.Write(str);
+        //    fs.Flush();
+        //}
 
         private String GetAllSources(IEnumerable<SaintCoinach.Xiv.IItemSource> src)
         {
