@@ -12,7 +12,7 @@ namespace EorzeaVirtualAssistant
         public Toolbox()
         {
             PopulateStringTable();
-        }   
+        }
 
         private void PopulateStringTable()
         {

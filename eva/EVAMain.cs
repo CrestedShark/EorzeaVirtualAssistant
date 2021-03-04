@@ -20,7 +20,7 @@ namespace EorzeaVirtualAssistant
         static void Main()
         {
             if (!File.Exists("EVA.cfg"))
-            { 
+            {
                 Application.EnableVisualStyles();
                 Application.SetCompatibleTextRenderingDefault(false);
                 Application.Run(new EVAInitPopup());

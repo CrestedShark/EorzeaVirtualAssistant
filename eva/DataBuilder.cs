@@ -18,11 +18,10 @@ namespace EorzeaVirtualAssistant
         private string gameDir = string.Empty;
         private string dataDir = string.Empty;
         private string itemPath = string.Empty;
-        Dictionary<int, int> sizeVariations = new Dictionary<int, int>();  //// DELETE THIS BEFORE PRODUCTION
 
         public DataBuilder()
         {
-            
+
 
             FileStream setupFS;
             if (File.Exists(cfgPath))
@@ -35,7 +34,7 @@ namespace EorzeaVirtualAssistant
             }
 
             EstablishPaths(setupFS);
-            
+
             if (gameDir.Length > 0)
             {
                 var watch = System.Diagnostics.Stopwatch.StartNew();
@@ -64,16 +63,12 @@ namespace EorzeaVirtualAssistant
                 }
             }
 
-            //// DELETE THIS BEFORE PRODUCTION     //////
+            //// DELETE THIS BEFORE PRODUCTION //////////
             if (File.Exists(dataBuilt))                //
             {                                          //
                 File.Delete(dataBuilt);                //
             }                                          //
-            if (File.Exists(dataBuilt))                //
-            {                                          //
-                File.Delete(dataBuilt);                //
-            }                                          //
-            //// DELETE THIS BEFORE PRODUCTION     //////
+            //// DELETE THIS BEFORE PRODUCTION //////////
 
             if (!File.Exists(dataBuilt))
             {
@@ -95,13 +90,6 @@ namespace EorzeaVirtualAssistant
                         CreateEntry(File.CreateText(path), item);
                     }
                 }
-                //// DELETE THIS BEFORE PRODUCTION              //////
-                string devSizeFile = "sizes" + itemExt;             //
-                if (true)                      //
-                {                                                   //
-                    SaveSizesToFile(File.CreateText(devSizeFile));  //
-                }                                                   //
-                //// DELETE THIS BEFORE PRODUCTION              //////
                 File.Create(dataBuilt);
             }
         }
@@ -136,8 +124,7 @@ namespace EorzeaVirtualAssistant
                 }
                 itemStrIndex++;
             }
-                
-            captureSize(AllColumns.Count());    //// DELETE THIS BEFORE PRODUCTION
+
 
             finalizeWriteToFile(fs, itemStr);
         }
@@ -166,30 +153,6 @@ namespace EorzeaVirtualAssistant
             }
             return formatted;
         }
-
-        private void SaveSizesToFile(StreamWriter fs)
-        {
-            List<string> strs = new List<string>();
-            foreach (KeyValuePair<int,int> kv in sizeVariations)
-            {
-                strs.Add(kv.Key.ToString() + ": " + kv.Value.ToString());
-            }
-            finalizeWriteToFile(fs, strs.ToArray());
-        }
-
-        //// DELETE THIS BEFORE PRODUCTION                //////
-        private void captureSize(int size)                    //
-        {                                                     //
-            if (sizeVariations.ContainsKey(size))             //
-            {                                                 //
-                ++sizeVariations[size];                       //
-            }                                                 //
-            else                                              //
-            {                                                 //
-                sizeVariations.Add(size, 1);                  //
-            }                                                 //
-        }                                                     //
-        //// DELETE THIS BEFORE PRODUCTION                //////
 
         private void finalizeWriteToFile(StreamWriter fs, string[] itemStr)
         {
@@ -240,11 +203,6 @@ namespace EorzeaVirtualAssistant
             }
         }
 
-        public void ParseOnlineData()
-        {                                   // request data from xivapi.com
-        }
-
-
         public void EstablishPaths(FileStream fs)
         {
             StreamReader streamReader = new StreamReader(fs);
@@ -273,5 +231,5 @@ namespace EorzeaVirtualAssistant
         }
     }
 
-    
+
 }
