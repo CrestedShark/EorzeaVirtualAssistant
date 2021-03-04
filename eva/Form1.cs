@@ -56,7 +56,7 @@ namespace EorzeaVirtualAssistant
 
         private void InitFinished_Click(object sender, EventArgs e)
         {
-            Setup.BeginSetup(gameDirPath.Text, dataDirPath.Text);
+            Setup.SetupData(gameDirPath.Text, dataDirPath.Text);
             Application.Exit();
         }
 

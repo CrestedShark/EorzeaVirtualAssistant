@@ -17,7 +17,7 @@ namespace EorzeaVirtualAssistant
 
         }
 
-        public static void BeginSetup(string gamePath, string dataPath)
+        public static void SetupData(string gamePath, string dataPath)
         {
             if (!Directory.Exists(gamePath))
             {
@@ -28,7 +28,6 @@ namespace EorzeaVirtualAssistant
                 try
                 {
                     Directory.CreateDirectory(dataPath);
-
                 }
                 catch (Exception)
                 {
@@ -41,6 +40,7 @@ namespace EorzeaVirtualAssistant
             }
 
             CreateCFG(gamePath, dataPath);
+
         }
 
         public static void CreateCFG(string gamePath, string dataPath)

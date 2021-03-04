@@ -5,7 +5,6 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-
 //============================================================================
 // build local database of items via https://xivapi.com/ while minimizing data
 // usage via https://github.com/ufx/SaintCoinach
